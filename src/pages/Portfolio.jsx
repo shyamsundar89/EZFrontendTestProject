@@ -17,7 +17,7 @@ export default function Portfolio({
   const [playing, setPlaying] = useState(false);
 
   return (
-    <section className="hr-page" aria-label="Highlight Reel">
+    <section className="hr-page " aria-label="Highlight Reel">
       {/* Header */}
       {/* <header className="hr-header">
         <a className="hr-logo" href="#" aria-label="V Films home">
@@ -85,7 +85,7 @@ function CarouselButton({ direction = "next", onClick }) {
 
 function VideoViewport({ playing, poster, videoId, onPlay }) {
   return (
-    <div className="hr-viewport" aria-label="Video player">
+    <div className="hr-viewport mt-5 gap-0" aria-label="Video player">
       {playing ? (
         <iframe
           className="hr-iframe"

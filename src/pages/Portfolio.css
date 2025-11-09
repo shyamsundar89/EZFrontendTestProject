@@ -6,6 +6,7 @@
   --frame: #d8d5d1;
   --sprocket: #f3efeb;
   --grain: rgba(0, 0, 0, 0.05);
+  padding-bottom: 5px;
 }
 
 /* Page + Grain + Vignette */

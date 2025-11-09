@@ -3,7 +3,7 @@ import "./Branding.css";
 import Frame34 from "../../assets/team/Frame 34.svg";
 import brandingvec from "../../assets/vector/Branding Vector 04.svg";
 // import brandingvec03 from "../../assets/vector/services/services/Branding Vector 03.svg";
-import brandingvec04 from "../../assets/vector/services/Branding Vector 01.svg";
+// import brandingvec04 from "../../assets/vector/services/Branding Vector 01.svg";
 import { Link } from "react-router-dom";
 
 export default function Branding({
@@ -85,7 +85,7 @@ export default function Branding({
               </div>
 
               <div className="ml-70">
-                <img src={brandingvec04} alt="" />
+                <img src={brandingvec} alt="" />
               </div>
             </div>
             <div className="flex ">
@@ -96,7 +96,7 @@ export default function Branding({
                 </a>
               </div>
               <div className="pl-80">
-                <img src={brandingvec04} alt="" />
+                <img src={brandingvec} alt="" />
               </div>
             </div>
           </section>
