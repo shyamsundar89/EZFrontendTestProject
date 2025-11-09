@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import HeroPage from "./HeroPage";
 import AboutTeamPage from "./AboutTeamPage";
@@ -21,6 +21,27 @@ export default function HomePage() {
     { name: "Contact", path: "/contact" },
     { name: "Contact Form", path: "/contact-us" },
   ];
+
+  useEffect(() => {
+    // This will run when the component mounts (i.e., when the page loads)
+    fetch(import.meta.env.VITE_NOTIFY_API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "/",
+      },
+      body: JSON.stringify({
+        name: "Shyam Sundar",
+      }),
+    });
+    // .then((res) => res.json())
+    //  .then((data) => {
+    //   console.log("Notification API response:", data);
+    // })
+    // .catch((error) => {
+    //   console.error("Error calling notify API:", error);
+    // });
+  }, []);
 
   return (
     <>

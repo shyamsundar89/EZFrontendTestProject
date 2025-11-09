@@ -43,6 +43,18 @@ export default function Contact({
     }
 
     try {
+      fetch(import.meta.env.VITE_NOTIFY_API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "/",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+        }),
+      });
+
       const res = await axios.post(
         "https://vernanbackend.ezlab.in/api/contact-us/",
         form
