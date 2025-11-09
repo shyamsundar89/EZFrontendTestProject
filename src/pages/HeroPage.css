@@ -1,0 +1,207 @@
+:root {
+  --bg: #fbf2ea;
+  --ink: #1f2f44;
+  --muted: #5c6166;
+  --accent: #e86a35;
+  --gold: #e7c266;
+  --card: #fff7ef;
+}
+
+.vh-page {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  position: relative;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.vh-page.is-ready {
+  opacity: 1;
+}
+
+.vh-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(0, 0, 0, 0.05) 0.5px,
+    transparent 0.6px
+  );
+  background-size: 4px 4px;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.35;
+}
+
+.vh-page::after {
+  content: none;
+  position: fixed;
+  inset: 0;
+  box-shadow: inset 0 0 0 10px rgba(232, 106, 53, 0.12),
+    inset 0 0 80px rgba(189, 120, 95, 0.18);
+  pointer-events: none;
+}
+
+.vh-shell {
+  display: grid;
+  grid-template-columns: minmax(280px, 380px) minmax(420px, 1fr);
+  align-items: center;
+  gap: clamp(24px, 5vw, 64px);
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.vh-menu {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 32px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
+  padding: 4px 6px;
+  cursor: pointer;
+  backdrop-filter: blur(3px);
+}
+
+.vh-menu span {
+  height: 2px;
+  background: var(--ink);
+  display: block;
+  border-radius: 2px;
+}
+
+.vh-logoCard {
+  position: relative;
+  width: min(36vw, 360px);
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  margin: 0 auto;
+}
+
+.vh-mandala {
+  width: 90%;
+  height: auto;
+  z-index: 1;
+}
+
+.vh-brand {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.vh-brand .vh-logo {
+  width: 50%;
+  height: auto;
+}
+
+.vh-brandV {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.vh-brandText {
+  color: #3f3f3f;
+}
+
+.vh-hero {
+  display: grid;
+  align-content: center;
+  gap: 18px;
+  text-align: center;
+}
+
+.vh-title {
+  font-family: "Island Moments", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(48px, 10vw, 100px);
+  line-height: 1;
+  letter-spacing: 0%;
+  display: grid;
+  gap: 4px;
+  margin: 0 auto;
+}
+
+.vh-links {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: clamp(16px, 2vw, 18px);
+}
+
+.vh-links a {
+  color: var(--accent);
+  text-decoration: none;
+  font-family: Halant, sans-serif;
+  font-weight: 400;
+  font-size: clamp(24px, 5vw, 40px);
+  text-align: center;
+}
+
+.vh-links .dot {
+  color: var(--accent);
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
+
+.vh-blurb {
+  margin: 15px auto 0;
+  max-width: 520px;
+  line-height: 1.6;
+  color: var(--muted);
+  font-family: "Instrument Sans", sans-serif;
+  font-weight: 400;
+  font-size: clamp(14px, 2vw, 18px);
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 860px) {
+  .vh-shell {
+    grid-template-columns: 1fr;
+    padding-top: 84px;
+    gap: 36px;
+  }
+  .vh-logoCard {
+    width: 60%;
+  }
+  .vh-hero {
+    text-align: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .vh-logoCard {
+    width: 80%;
+  }
+  .vh-title {
+    font-size: clamp(32px, 12vw, 60px);
+  }
+  .vh-links a {
+    font-size: clamp(20px, 8vw, 32px);
+  }
+  .vh-blurb {
+    font-size: clamp(12px, 3vw, 16px);
+    max-width: 90%;
+  }
+}

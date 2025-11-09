@@ -1,0 +1,251 @@
+:root {
+  --bg: #fbf2ea;
+  --ink: #1f2f44;
+  --muted: #5f656a;
+  --accent: #e86a35;
+  --paper: #f5e3b9;
+  --paper-edge: #e9d79f;
+  --grain: rgba(0, 0, 0, 0.05);
+}
+
+/* Page wrapper */
+.st-page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  position: relative;
+  overflow-x: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.st-page.is-ready {
+  opacity: 1;
+}
+.st-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  box-shadow: inset 0 0 80px rgba(189, 120, 95, 0.18);
+  pointer-events: none;
+}
+
+/* Header */
+.st-header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  padding: 8px 16px;
+}
+.st-logo {
+  text-decoration: none;
+  font-weight: 600;
+  color: #334;
+  letter-spacing: 0.2px;
+}
+.st-logo .v {
+  color: var(--accent);
+  font-weight: 800;
+  margin-right: 2px;
+}
+.st-hamburger {
+  width: 36px;
+  height: 30px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 4px 6px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+}
+.st-hamburger span {
+  height: 2px;
+  background: #203246;
+  border-radius: 2px;
+}
+
+/* Main Shell */
+.st-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 8px 20px 48px;
+  display: grid;
+  grid-template-columns: 480fr 700fr;
+  gap: 24px;
+}
+
+/* Left column */
+.st-left {
+  position: relative;
+  min-height: 520px;
+}
+.st-note {
+  width: clamp(260px, 70%, 360px);
+  background: var(--paper);
+  color: #2b2b2b;
+  box-shadow: 0 16px 26px rgba(0, 0, 0, 0.16), 0 2px 0 var(--paper-edge) inset;
+  border-radius: 6px;
+  padding: 18px 18px 20px;
+  transform: rotate(-8deg);
+  position: absolute;
+  top: 28px;
+  left: 24px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.st-note::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 36px;
+  top: -14px;
+  right: 22px;
+  border: 3px solid #7b7f85;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-right: none;
+  transform: rotate(15deg);
+  background: transparent;
+}
+.st-gate {
+  width: 270px;
+  height: auto;
+  position: absolute;
+  left: 32px;
+  bottom: 0;
+  transform: translateY(8px);
+}
+
+/* Right column */
+.st-right {
+  position: relative;
+  min-height: 520px;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+.st-silhouettes {
+  display: grid;
+  place-items: center;
+  padding-top: 40px;
+}
+.st-sil-svg {
+  width: min(680px, 92%);
+  height: auto;
+}
+.st-scribbles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  color: var(--ink);
+}
+.scribble-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.scribble-label {
+  position: absolute;
+  font-size: 18px;
+  color: var(--ink);
+}
+
+/* CTA Section */
+.st-cta {
+  display: grid;
+  place-items: center;
+  gap: 14px;
+  padding-bottom: 10px;
+}
+.st-cta-text {
+  font-family: Halant;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 90%;
+  text-align: center;
+  padding-inline: 12px;
+}
+
+/* Buttons */
+.st-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(232, 106, 53, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.st-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(232, 106, 53, 0.42);
+}
+.st-btn:active {
+  transform: translateY(0);
+}
+
+/* Ornament images */
+.group-img,
+.groupimg1,
+.st-gate {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 980px) {
+  .st-shell {
+    grid-template-columns: 1fr;
+  }
+  .st-left {
+    order: 1;
+    min-height: auto;
+    margin-bottom: 40px;
+  }
+  .st-right {
+    order: 2;
+  }
+  .st-note {
+    left: 10px;
+    top: 18px;
+    width: min(90%, 320px);
+  }
+  .st-gate {
+    left: 16px;
+  }
+  .scribble-label.left {
+    left: 8%;
+  }
+  .scribble-label.right {
+    right: 4%;
+  }
+  .st-cta-text {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 560px) {
+  .st-note {
+    width: min(92%, 280px);
+    transform: rotate(-6deg);
+  }
+  .st-cta-text {
+    font-size: 18px;
+  }
+  .st-sil-svg {
+    width: min(90%, 320px);
+  }
+  .st-gate {
+    width: 200px;
+  }
+}

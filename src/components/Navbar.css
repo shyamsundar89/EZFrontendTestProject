@@ -1,0 +1,246 @@
+:root {
+  --bg: #fbf2ea;
+  --ink: #1f2f44;
+  --accent: #e86a35;
+  --frame: #e64c2f;
+}
+
+/* wrapper */
+.vf-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  background: var(--bg);
+  transition: background 0.3s ease;
+}
+
+/* compact bar (logo + icon) */
+.vf-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 8px 16px;
+}
+
+.vf-bar img {
+  height: 40px;
+}
+
+.vf-logo {
+  text-decoration: none;
+  color: #2a3340;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.vf-logo .v {
+  color: var(--accent);
+  font-weight: 900;
+  margin-right: 2px;
+}
+
+.vf-menuBtn {
+  width: 38px;
+  height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 7px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 7px;
+  cursor: pointer;
+  backdrop-filter: blur(2px);
+  transition: all 0.3s ease;
+}
+
+.vf-menuBtn span {
+  height: 2px;
+  width: 100%;
+  background: #1f3044;
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.vf-menuBtn.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.vf-menuBtn.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.vf-menuBtn.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* collapsible panel */
+.vf-panel {
+  position: relative;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
+  border-top: 1px solid transparent;
+  border-bottom: 0 solid transparent;
+}
+
+.vf-nav.is-open .vf-panel {
+  max-height: 90vh;
+  border-top-color: var(--frame);
+  border-bottom: 1px solid var(--frame);
+}
+
+.vf-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(14px, 3vw, 28px);
+  list-style: none;
+  margin: 0;
+  padding: 12px 16px;
+  flex-wrap: wrap;
+}
+
+.vf-links a {
+  color: #1f3044;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.vf-links a:hover {
+  text-decoration: underline;
+}
+
+.vf-cta {
+  background: var(--accent);
+  color: #fff !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 16px rgba(232, 106, 53, 0.28);
+  transition: all 0.3s ease;
+}
+
+.vf-links a.vf-cta:hover {
+  text-decoration: none !important;
+}
+
+.vf-cta i {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  display: inline-block;
+}
+
+.vf-cta i::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  top: 50%;
+  height: 2px;
+  background: #fff;
+  transform: translateY(-50%);
+  border-radius: 2px;
+}
+
+.vf-cta i::after {
+  content: "";
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: translateY(-60%) rotate(-45deg);
+}
+
+/* close button inside panel */
+.vf-close {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.6);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.vf-close span {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+
+.vf-close span::before,
+.vf-close span::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 2px;
+  background: #1f3044;
+  border-radius: 2px;
+}
+
+.vf-close span::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.vf-close span::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .vf-links {
+    justify-content: center;
+  }
+  .vf-cta {
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .vf-links {
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 44px;
+  }
+  .vf-bar {
+    padding: 8px 12px;
+  }
+  .vf-menuBtn {
+    width: 34px;
+    height: 28px;
+  }
+  .vf-menuBtn span {
+    height: 2px;
+  }
+  .vf-cta {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+  .vf-logo {
+    font-size: 16px;
+  }
+  .vf-logo .v {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,217 @@
+:root {
+  --bg: #fbf2ea;
+  --ink: #1f2f44;
+  --muted: #5e6469;
+  --accent: #e86a35;
+  --paper: #ffffff;
+  --tape: #d9cdb0;
+  --grain: rgba(0, 0, 0, 0.05);
+}
+
+/* page background with grain + soft vignette */
+.sb-page {
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--ink);
+  position: relative;
+  overflow-x: clip;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.sb-page.is-ready {
+  opacity: 1;
+}
+.sb-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(var(--grain) 0.5px, transparent 0.6px);
+  background-size: 4px 4px;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.sb-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  box-shadow: inset 0 0 80px rgba(189, 120, 95, 0.18);
+  pointer-events: none;
+}
+
+/* header */
+.sb-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 10px 16px;
+}
+.sb-logo {
+  text-decoration: none;
+  color: #2a3340;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.sb-logo .v {
+  color: var(--accent);
+  font-weight: 900;
+  margin-right: 2px;
+}
+.sb-hamburger {
+  width: 36px;
+  height: 30px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 4px 6px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
+  backdrop-filter: blur(2px);
+}
+.sb-hamburger span {
+  height: 2px;
+  background: #203246;
+  border-radius: 2px;
+}
+
+/* layout */
+.sb-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 6px 20px 40px;
+}
+
+/* title with brush underline */
+.sb-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(22px, 2.2vw, 28px);
+  text-align: center;
+  margin: 6px auto 22px;
+  position: relative;
+  display: inline-block;
+}
+.sb-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  bottom: -10px;
+  width: min(420px, 58vw);
+  height: 10px;
+  background: linear-gradient(
+    90deg,
+    transparent 0 2%,
+    #1f3450 12% 88%,
+    transparent 98% 100%
+  );
+  border-radius: 6px/10px;
+  filter: blur(0.3px);
+}
+
+/* Services card grid */
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: start;
+}
+
+/* Card */
+.service-card {
+  background: var(--paper);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+}
+.service-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  transition: transform 0.5s;
+}
+.service-card:hover img {
+  transform: scale(1.05);
+}
+.service-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  color: var(--ink);
+  transition: color 0.3s;
+}
+.service-card:hover h3 {
+  color: var(--accent);
+}
+.service-card p {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin: 0.5rem 1rem 1rem;
+}
+.service-card .learn-more {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+  color: var(--accent);
+  font-weight: 500;
+  cursor: pointer;
+  transition: text-decoration 0.3s;
+}
+.service-card .learn-more:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .service-card img {
+    height: 200px;
+  }
+}
+@media (max-width: 768px) {
+  .services-container {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card img {
+    height: 180px;
+  }
+}
+@media (max-width: 480px) {
+  .services-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .service-card img {
+    height: 160px;
+  }
+  .service-card h3 {
+    font-size: 1.1rem;
+  }
+  .service-card p {
+    font-size: 0.8rem;
+  }
+  .service-card .learn-more {
+    font-size: 0.8rem;
+  }
+}
+
+/* Optional: bottom illustration */
+.services-illustration {
+  margin-top: 4rem;
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
